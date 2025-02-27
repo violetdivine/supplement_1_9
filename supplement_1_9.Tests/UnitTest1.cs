@@ -27,4 +27,35 @@ public class UnitTest1
         }
     }
 
+    [Fact]
+    public void ThrowsExceptionIfNumberIsInvalid(){
+
+        var generator = new RandomFloatEnumerable();
+        var enumerator = generator.GetEnumerator();
+
+        int count = 0;
+
+        Assert.Throws<InvalidSequenceException>(() => {
+
+            while (enumerator.MoveNext()){
+
+                double current = enumerator.Current;
+
+                if(current <= 0.5){
+                    
+                    count++;
+                    if(count == 3){
+
+                        throw new InvalidSequenceException("There are 3 consecutive" + 
+                        "numbers that are less than or equal to 0.5");
+                    }
+                }
+                else{
+
+                    count = 0;
+                }
+            }
+        });
+    }
+
 }
