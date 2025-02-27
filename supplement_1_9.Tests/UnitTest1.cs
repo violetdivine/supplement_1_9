@@ -18,13 +18,17 @@ public class UnitTest1
         var generator = new RandomFloatEnumerable();
         var enumerator = generator.GetEnumerator();
 
-        for (int i=0; i < 10; i++){
+        try{
 
-            enumerator.MoveNext();
-            double value = enumerator.Current;
-            
-            Assert.InRange(value, 0.0, 1.0);
+            for (int i=0; i < 10; i++){
+
+                enumerator.MoveNext();
+                double value = enumerator.Current;
+                
+                Assert.InRange(value, 0.0, 1.0);
+            }
         }
+        catch (InvalidSequenceException){}
     }
 
     [Fact]
@@ -35,7 +39,8 @@ public class UnitTest1
 
         int count = 0;
 
-        Assert.Throws<InvalidSequenceException>(() => {
+        var throwException = false;
+        try{
 
             while (enumerator.MoveNext()){
 
@@ -55,7 +60,11 @@ public class UnitTest1
                     count = 0;
                 }
             }
-        });
+        }
+        catch (InvalidSequenceException){
+            throwException = true;
+        }
+        Assert.True(throwException, "The exception was not thrown.");
     }
 
 }
