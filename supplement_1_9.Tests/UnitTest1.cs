@@ -12,6 +12,10 @@ public class UnitTest1
         Assert.Equal("Error message - Test", ex.Message);
     }
     
+    /// <summary>
+    /// Test checks if numbers are in valid range 0.0 - 1.0.
+    /// Try/Catch is for the exception when necessary.
+    /// </summary>
     [Fact]
     public void ShouldGenerateCorrectNumbersInRange()
     {
@@ -31,6 +35,9 @@ public class UnitTest1
         catch (InvalidSequenceException){}
     }
 
+    /// <summary>
+    /// Test checks if sequence is valid, throws an exception if not.
+    /// </summary>
     [Fact]
     public void ThrowsExceptionIfNumberIsInvalid(){
 
