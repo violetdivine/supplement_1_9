@@ -2,6 +2,9 @@
 
 public class UnitTest1
 {
+    /// <summary>
+    /// Test to ensure that the exception stores the error message.
+    /// </summary>
     [Fact]
     public void ShouldThrowExpeceptionWhenInvalidSequence()
     {
