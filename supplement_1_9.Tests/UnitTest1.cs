@@ -1,4 +1,6 @@
-﻿namespace supplement_1_9.Tests;
+﻿using System.Runtime.CompilerServices;
+
+namespace supplement_1_9.Tests;
 
 public class UnitTest1
 {
@@ -72,6 +74,53 @@ public class UnitTest1
             throwException = true;
         }
         Assert.True(throwException, "The exception was not thrown.");
+    }
+
+    [Fact]
+    public void ShouldTestIfQuartersAreEqual(){
+
+        var q1 = new Quarter(0.1);
+        var q2 = new Quarter(0.2);
+        var q3 = new Quarter(0.3);
+        var q4 = new Quarter(0.6);
+
+        Assert.True(q1 == q2, "Numbers in the same quarter should be equal.");
+        Assert.False(q1 == q3, "Numbers in different quarters should not be equal.");
+        Assert.True(q3 == q4, "Numbers in the same quarter should be equal.");
+
+    }
+
+    [Fact]
+    public void ShouldTestQuarterComparisons(){
+
+        var q1 = new Quarter(0.1);
+        var q2 = new Quarter(0.3);
+        var q3 = new Quarter(0.6);
+        var q4 = new Quarter(0.9);  
+    
+        Assert.True(q1 < q2, "q1 should be less than q2");
+        Assert.True(q1 < q3, "q3 should be greater than q1");
+        Assert.False(q3 < q2, "q2 should not be greater than q3");
+        Assert.True(q1 < q4, "q4 should be greater than q1");
+        
+        Assert.True(q1 <= q2, "q1 should be less than or equal to q2");
+        Assert.True(q3 <= q3, "q4 should be greater than or equal to q3");
+        Assert.False(q3 <= q2, "q2 should not be greater than or equal to q3");
+    }   
+
+    [Fact]
+    public void ShouldTestHashCodeConsistency(){
+
+        var q1 = new Quarter(0.1);
+        var q2 = new Quarter(0.2);
+        var q3 = new Quarter(0.3);
+        var q4 = new Quarter(0.6);
+
+        Assert.Equal(q1.GetHashCode(), q2.GetHashCode());
+        Assert.NotEqual(q1.GetHashCode(), q3.GetHashCode());
+        Assert.Equal(q3.GetHashCode(), q4.GetHashCode());
+
+        
     }
 
 }
