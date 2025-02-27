@@ -3,8 +3,9 @@
 public class UnitTest1
 {
     [Fact]
-    public void Test1()
+    public void ShouldThrowExpeceptionWhenInvalidSequence()
     {
-
+        var ex = new InvalidSequenceException("Error message - Test");
+        Assert.Equal("Error message - Test", ex.Message);
     }
 }
