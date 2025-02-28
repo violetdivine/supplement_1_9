@@ -77,6 +77,9 @@ public class UnitTest1
         Assert.True(throwException, "The exception was not thrown.");
     }
 
+    /// <summary>
+    /// Checks if quarter objects are equal
+    /// </summary>
     [Fact]
     public void ShouldTestIfQuartersAreEqual(){
 
@@ -91,6 +94,9 @@ public class UnitTest1
 
     }
 
+    /// <summary>
+    /// Tests operators to ensure they're working correctly.
+    /// </summary>
     [Fact]
     public void ShouldTestQuarterComparisons(){
 
@@ -109,6 +115,10 @@ public class UnitTest1
         Assert.False(q3 <= q2, "q2 should not be greater than or equal to q3");
     }   
 
+    /// <summary>
+    /// Makes sure that GetHashCode() produces hash codes for quarters that
+    /// are in the same group.
+    /// </summary>
     [Fact]
     public void ShouldTestHashCodeConsistency(){
 
