@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using static supplement_1_9.RandomFloatEnumerable;
 
 namespace supplement_1_9.Tests;
 
